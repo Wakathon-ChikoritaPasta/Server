@@ -25,7 +25,11 @@ public class CustomUserDetailsService implements UserDetailsService {
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
+                .kakaoId(user.getKakaoId())
                 .roles(user.getRoles())
+                .symbol(user.getSymbol())
+                .level(user.getLevel())
+                .major(user.getMajor())
                 .build();
     }
 }

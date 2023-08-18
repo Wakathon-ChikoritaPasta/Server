@@ -13,10 +13,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -75,9 +77,12 @@ public class JwtTokenProvider {
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
 
+        log.info("getAuthentication: " + claims.getSubject());
+        log.info("getAuthentication: " + authorities);
         UserDetails principal = new User(claims.getSubject(), "", authorities);
         return new UsernamePasswordAuthenticationToken(principal, "", authorities);
     }
+
 
     public boolean validateToken(String token) {
         try {

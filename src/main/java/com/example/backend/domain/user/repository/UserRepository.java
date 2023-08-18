@@ -12,4 +12,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUsername(String username);
     List<User> findAllByOrderByLevel_ExperienceAsc();
+    Optional<User> findByKakaoId(Long kakaoId);
 }

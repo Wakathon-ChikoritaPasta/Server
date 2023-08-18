@@ -1,5 +1,6 @@
 package com.example.backend.global.jwt;
 
+import com.example.backend.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -30,7 +31,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         String token = resolveToken((HttpServletRequest) request);
         log.info("req.getRequestURI() : {}", req.getRequestURI());
 
-        if (req.getRequestURI().equals("/api/auth/reissue")
+        if (req.getRequestURI().equals("/api/user/login/reissue")
                 || req.getRequestURI().equals("/error")) {
             chain.doFilter(request, response);
             return;

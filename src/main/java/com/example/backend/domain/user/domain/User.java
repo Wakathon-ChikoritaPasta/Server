@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
+@Setter
 @SuperBuilder
 @Builder
 @NoArgsConstructor
@@ -50,6 +51,9 @@ public class User extends BaseEntity implements UserDetails {
     @ColumnDefault("0")
     private int count;
 
+    @Column(nullable = false)
+    private long kakaoId;
+
     @Column
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
@@ -64,22 +68,22 @@ public class User extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public void updateCount(){

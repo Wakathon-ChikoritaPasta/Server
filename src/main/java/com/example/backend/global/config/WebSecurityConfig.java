@@ -1,5 +1,6 @@
 package com.example.backend.global.config;
 
+import com.example.backend.global.enums.Authority;
 import com.example.backend.global.jwt.JwtAuthenticationFilter;
 import com.example.backend.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -28,9 +29,10 @@ public class WebSecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/swagger-ui/**", "/swagger-resources/**").permitAll()
-                .antMatchers("/v2/**", "/api/auth/**", "/error").permitAll()
-                .antMatchers("/api/user/**").hasRole("USER")
+                .anyRequest().permitAll()
+//                .antMatchers("/swagger-ui/**", "/swagger-resources/**").permitAll()
+//                .antMatchers("/v2/**", "/api/auth/**", "/error").permitAll()
+//                .antMatchers("/api/user/**").permitAll()
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider, redisTemplate), UsernamePasswordAuthenticationFilter.class);
 

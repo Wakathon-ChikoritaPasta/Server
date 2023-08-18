@@ -1,5 +1,7 @@
 package com.example.backend.domain.controller;
 
+import com.example.backend.domain.user.dto.res.KakaoLoginResponseDto;
+import com.example.backend.domain.user.service.OauthService;
 import com.example.backend.global.response.BaseResponseDto;
 import com.example.backend.domain.user.service.AuthService;
 import com.example.backend.domain.user.dto.req.TokenReissueRequestDto;
@@ -9,10 +11,8 @@ import com.example.backend.domain.user.dto.res.TokenReissueResponseDto;
 import com.example.backend.domain.user.dto.res.UserLoginResponseDto;
 import com.example.backend.domain.user.dto.res.UserRegisterResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
+    private final OauthService oauthService;
 
     @PostMapping("/join")
     public BaseResponseDto<UserRegisterResponseDto> join(
@@ -33,6 +34,13 @@ public class AuthController {
             @RequestBody UserLoginRequestDto request
     ) {
         return authService.login(request.getUsername(), request.getPassword());
+    }
+
+    @PostMapping("/kakao-login")
+    public BaseResponseDto<KakaoLoginResponseDto> kakaoLogin(
+            @RequestParam String accessToken
+    ) {
+        return oauthService.kakaoLogin(accessToken);
     }
 
     @PostMapping("/reissue")

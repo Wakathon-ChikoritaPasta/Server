@@ -1,5 +1,6 @@
 package com.example.backend.domain.major.domain;
 
+import com.example.backend.domain.user.domain.User;
 import com.example.backend.global.BaseEntity;
 import com.example.backend.global.enums.MajorType;
 import lombok.*;
@@ -32,4 +33,7 @@ public class Major extends BaseEntity {
         this.totalExperience += addExperience;
     }
 
+    public void addMajorWithUser(Major major, User user){
+        user.setMajor(major);
+    }
 }

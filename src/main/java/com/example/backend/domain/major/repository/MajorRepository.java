@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MajorRepository extends JpaRepository<Major, Long> {
 
@@ -20,4 +21,6 @@ public interface MajorRepository extends JpaRepository<Major, Long> {
     List<MajorScoreRequestDto> findAllNamesAndTotalScores();
 
     List<Major> findAllByOrderByTotalExperienceAsc();
+
+    Optional<Major> findMajorByName(MajorType name);
 }
