@@ -9,7 +9,7 @@ import com.example.backend.domain.user.dto.res.TokenReissueResponseDto;
 import com.example.backend.domain.user.dto.res.UserLoginResponseDto;
 import com.example.backend.domain.user.dto.res.UserRegisterResponseDto;
 import com.example.backend.global.enums.Authority;
-import com.example.backend.global.enums.Major;
+import com.example.backend.global.enums.MajorType;
 import com.example.backend.global.jwt.JwtTokenProvider;
 import com.example.backend.global.jwt.TokenInfo;
 import lombok.RequiredArgsConstructor;
@@ -35,13 +35,13 @@ public class AuthService {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
     @Transactional
-    public BaseResponseDto<UserRegisterResponseDto> join(String username, String password, Major major) {
+    public BaseResponseDto<UserRegisterResponseDto> join(String username, String password, MajorType majorType) {
 
         User user = User.builder()
                 .username(username)
                 .password(passwordEncoder.encode(password))
                 .roles(Collections.singletonList(Authority.ROLE_USER.name()))
-                .major(major)
+                .majorType(majorType)
                 .exp(0L)
                 .build();
         userRepository.save(user);

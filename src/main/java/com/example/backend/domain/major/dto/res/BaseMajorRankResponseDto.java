@@ -1,17 +1,15 @@
-package com.example.backend.domain.user.dto.req;
+package com.example.backend.domain.major.dto.res;
 
 import com.example.backend.global.enums.MajorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @AllArgsConstructor(staticName = "of")
-@Getter @Setter
+@Getter
 @Builder
-public class UserRegisterRequestDto {
-
-    private String username;
-    private String password;
+public class BaseMajorRankResponseDto {
+    private int rank;
     private MajorType majorType;
+    private Long experience;
 }

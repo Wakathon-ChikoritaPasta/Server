@@ -1,5 +1,6 @@
 package com.example.backend.domain.symbol.domain;
 
+import com.example.backend.domain.user.domain.User;
 import com.example.backend.global.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -19,8 +20,13 @@ public class Symbol extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Column(nullable = false)
-    private String title;
+    @Enumerated(EnumType.STRING)
+    private SymbolType title;
 
     @Column(nullable = false)
     private String description;

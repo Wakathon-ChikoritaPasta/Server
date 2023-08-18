@@ -1,6 +1,7 @@
 package com.example.backend.domain.major.domain;
 
 import com.example.backend.global.BaseEntity;
+import com.example.backend.global.enums.MajorType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
@@ -20,10 +21,11 @@ public class Major extends BaseEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private MajorType name;
 
     @Column(nullable = false)
     @ColumnDefault("0")
-    private int total_score;
+    private Long totalExperience;
 
 }

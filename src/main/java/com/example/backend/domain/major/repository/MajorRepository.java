@@ -17,4 +17,6 @@ public interface MajorRepository extends JpaRepository<Major, Long> {
 
     @Query("SELECT new com.example.backend.domain.major.dto.MajorScoreDto(m.name, m.total_score) FROM Major m")
     List<MajorScoreDto> findAllNamesAndTotalScores();
+
+    List<Major> findAllByOrderByTotalExperienceAsc();
 }
