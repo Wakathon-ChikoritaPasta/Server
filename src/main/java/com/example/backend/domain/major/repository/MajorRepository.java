@@ -1,7 +1,7 @@
 package com.example.backend.domain.major.repository;
 
 import com.example.backend.domain.major.domain.Major;
-import com.example.backend.domain.major.dto.MajorScoreRequestDto;
+import com.example.backend.domain.major.dto.req.MajorScoreRequestDto;
 import com.example.backend.global.enums.MajorType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

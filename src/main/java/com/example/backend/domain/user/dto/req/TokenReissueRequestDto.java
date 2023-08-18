@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor(staticName = "of")
-@Setter @Getter
+@Setter
+@Getter
 @Builder
 public class TokenReissueRequestDto {
 

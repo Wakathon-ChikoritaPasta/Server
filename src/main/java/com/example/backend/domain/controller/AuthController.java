@@ -1,17 +1,16 @@
 package com.example.backend.domain.controller;
 
-import com.example.backend.domain.user.dto.res.KakaoLoginResponseDto;
-import com.example.backend.domain.user.service.OauthService;
-import com.example.backend.global.response.BaseResponseDto;
-import com.example.backend.domain.user.service.AuthService;
 import com.example.backend.domain.user.dto.req.TokenReissueRequestDto;
 import com.example.backend.domain.user.dto.req.UserLoginRequestDto;
 import com.example.backend.domain.user.dto.req.UserRegisterRequestDto;
+import com.example.backend.domain.user.dto.res.KakaoLoginResponseDto;
 import com.example.backend.domain.user.dto.res.TokenReissueResponseDto;
 import com.example.backend.domain.user.dto.res.UserLoginResponseDto;
 import com.example.backend.domain.user.dto.res.UserRegisterResponseDto;
+import com.example.backend.domain.user.service.AuthService;
+import com.example.backend.domain.user.service.OauthService;
+import com.example.backend.global.response.BaseResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

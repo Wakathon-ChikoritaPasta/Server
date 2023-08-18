@@ -1,7 +1,7 @@
 package com.example.backend.domain.major.service;
 
-import com.example.backend.domain.major.dto.MajorScoreRequestDto;
-import com.example.backend.domain.major.dto.MajorScoreResponseDto;
+import com.example.backend.domain.major.dto.req.MajorScoreRequestDto;
+import com.example.backend.domain.major.dto.req.MajorScoreResponseDto;
 import com.example.backend.domain.major.repository.MajorRepository;
 import com.example.backend.global.enums.MajorType;
 import org.springframework.beans.factory.annotation.Autowired;

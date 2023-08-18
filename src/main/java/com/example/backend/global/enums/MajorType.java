@@ -3,8 +3,6 @@ package com.example.backend.global.enums;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Arrays;
-
 @RequiredArgsConstructor
 @Getter
 public enum MajorType {

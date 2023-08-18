@@ -8,7 +8,6 @@ import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Setter
 @Getter
 @SuperBuilder
 @Builder
@@ -32,7 +31,7 @@ public class Symbol extends BaseEntity {
     @Column(nullable = false)
     private String description;
 
-    public void updateSymbolType(){
+    public void updateSymbolType() {
         SymbolType nextSymbolType = SymbolType.updateSymbolType(this.title);
         this.title = Objects.isNull(nextSymbolType) ? this.title : nextSymbolType;
     }

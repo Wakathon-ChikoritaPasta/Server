@@ -1,17 +1,17 @@
 package com.example.backend.domain.user.service;
 
 import com.example.backend.domain.user.domain.User;
-import com.example.backend.domain.user.repository.UserRepository;
-import com.example.backend.global.response.BaseResponseDto;
-import com.example.backend.global.response.ErrorMessage;
 import com.example.backend.domain.user.dto.req.TokenReissueRequestDto;
 import com.example.backend.domain.user.dto.res.TokenReissueResponseDto;
 import com.example.backend.domain.user.dto.res.UserLoginResponseDto;
 import com.example.backend.domain.user.dto.res.UserRegisterResponseDto;
+import com.example.backend.domain.user.repository.UserRepository;
 import com.example.backend.global.enums.Authority;
 import com.example.backend.global.enums.MajorType;
 import com.example.backend.global.jwt.JwtTokenProvider;
 import com.example.backend.global.jwt.TokenInfo;
+import com.example.backend.global.response.BaseResponseDto;
+import com.example.backend.global.response.ErrorMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

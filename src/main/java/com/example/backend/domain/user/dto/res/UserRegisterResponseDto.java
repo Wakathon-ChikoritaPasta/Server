@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor(staticName = "of")
-@Getter @Setter
+@Getter
+@Setter
 @Builder
 public class UserRegisterResponseDto {
 
