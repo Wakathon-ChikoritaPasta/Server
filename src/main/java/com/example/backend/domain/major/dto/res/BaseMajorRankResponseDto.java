@@ -10,6 +10,6 @@ import lombok.Getter;
 @Builder
 public class BaseMajorRankResponseDto {
     private int rank;
-    private MajorType majorType;
+    private String majorType;
     private Long experience;
 }

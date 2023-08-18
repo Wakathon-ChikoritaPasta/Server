@@ -32,7 +32,7 @@ public class LevelService {
         String nickname = user.getUsername();
         LadybugType ladybugType = user.getLevel().getLadybugType();
         Long experience = user.getLevel().getExperience();
-        return BaseIndividualRankResponseDto.of(rank, nickname, ladybugType, experience);
+        return BaseIndividualRankResponseDto.of(rank, nickname, ladybugType.toString(), experience);
     }
 
     private List<User> getUsersSortedByLevel() {

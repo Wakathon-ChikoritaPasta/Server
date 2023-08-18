@@ -39,7 +39,7 @@ public class LadybugService {
         BaseLevelResponseDto baseLevelResponseDto = getBaseLevelInfoFromUser(user);
         List<BaseIndividualRankResponseDto> schoolRank = getSchoolRankFromUser(user);
         List<BaseMajorRankResponseDto> majorRank = getMajorRankFromUser(user);
-        return LadybugDetailResponseDto.of(symbolType, userMajorType, baseLevelResponseDto, schoolRank, majorRank);
+        return LadybugDetailResponseDto.of(symbolType, userMajorType.toString(), baseLevelResponseDto, schoolRank, majorRank);
     }
 
     public UpdateLadyBugResponseDto updateLadybugInfo(Long userId, UpdateLadyBugRequestDto requestDto) {
@@ -116,7 +116,7 @@ public class LadybugService {
         String nickname = user.getUsername();
         LadybugType ladybugType = user.getLevel().getLadybugType();
         Long experience = user.getLevel().getExperience();
-        return BaseIndividualRankResponseDto.of(rank, nickname, ladybugType, experience);
+        return BaseIndividualRankResponseDto.of(rank, nickname, ladybugType.toString(), experience);
     }
 
     private List<BaseMajorRankResponseDto> getMajorRankFromUser(User user) {
@@ -138,7 +138,7 @@ public class LadybugService {
     }
 
     private BaseMajorRankResponseDto createBaseMajorRankResponseDto(Major major, int rank) {
-        return BaseMajorRankResponseDto.of(rank, major.getName(), major.getTotalExperience());
+        return BaseMajorRankResponseDto.of(rank, major.getName().toString(), major.getTotalExperience());
     }
 
     private SymbolType getSymbolTypeFromUser(User user) {

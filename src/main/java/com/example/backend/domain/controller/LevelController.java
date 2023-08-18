@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/api/level")
 public class LevelController {
-
     private final LevelService levelService;
 
     @GetMapping("/ranking")
