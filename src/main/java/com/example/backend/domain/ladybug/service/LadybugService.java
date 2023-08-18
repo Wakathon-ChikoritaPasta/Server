@@ -1,7 +1,9 @@
 package com.example.backend.domain.ladybug.service;
 
 import com.example.backend.domain.ladybug.domain.LadybugType;
+import com.example.backend.domain.ladybug.dto.req.UpdateLadyBugRequestDto;
 import com.example.backend.domain.ladybug.dto.res.LadybugDetailResponseDto;
+import com.example.backend.domain.ladybug.dto.res.UpdateLadyBugResponseDto;
 import com.example.backend.domain.level.domain.Level;
 import com.example.backend.domain.level.dto.res.BaseIndividualRankResponseDto;
 import com.example.backend.domain.level.dto.res.BaseLevelResponseDto;
@@ -9,6 +11,8 @@ import com.example.backend.domain.level.repository.LevelRepository;
 import com.example.backend.domain.major.domain.Major;
 import com.example.backend.domain.major.dto.res.BaseMajorRankResponseDto;
 import com.example.backend.domain.major.repository.MajorRepository;
+import com.example.backend.domain.mission.MissionRepository;
+import com.example.backend.domain.mission.domain.Mission;
 import com.example.backend.domain.symbol.domain.SymbolType;
 import com.example.backend.domain.user.domain.User;
 import com.example.backend.domain.user.repository.UserRepository;
@@ -16,14 +20,18 @@ import com.example.backend.global.enums.MajorType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class LadybugService {
     private final UserRepository userRepository;
     private final MajorRepository majorRepository;
+    private final MissionRepository missionRepository;
 
     public LadybugDetailResponseDto findLadybugDetailInfo(User user){
         SymbolType symbolType = getSymbolTypeFromUser(user);
@@ -32,6 +40,47 @@ public class LadybugService {
         List<BaseIndividualRankResponseDto> schoolRank = getSchoolRankFromUser(user);
         List<BaseMajorRankResponseDto> majorRank = getMajorRankFromUser(user);
         return LadybugDetailResponseDto.of(symbolType, userMajorType, baseLevelResponseDto, schoolRank, majorRank);
+    }
+
+    public UpdateLadyBugResponseDto updateLadybugInfo(User user, UpdateLadyBugRequestDto requestDto){
+        List<Long> successMissions = updateLadybugExperienceForMission(user, requestDto.getMissionIdList(), requestDto.getLongitude(), requestDto.getLatitude());
+        return UpdateLadyBugResponseDto.of(successMissions);
+    }
+    private List<Long> updateLadybugExperienceForMission(User user, List<Long> missionList, double longitude, double latitude){
+        List<Long> successMission = new ArrayList<>();
+        missionList.forEach(missionId -> {
+            Mission mission = getMission(missionId);
+            double distance = calculateDistance(mission.getLongitude(), mission.getLatitude(), longitude, latitude);
+            Long successId = updateExperienceForMission(user, mission, distance);
+            if(!Objects.isNull(successId))
+                successMission.add(successId);
+        });
+        return successMission;
+    }
+    private Mission getMission(Long missionId){
+        return missionRepository.findById(missionId).orElseThrow();
+    }
+    private double calculateDistance(double firstLongitude, double firstLatitude, double secondLongitude, double secondLatitude){
+        final int R = 6371; // 지구의 반경 (단위: km)
+        double latDistance = Math.toRadians(secondLatitude - firstLatitude);
+        double lonDistance = Math.toRadians(Math.abs(secondLongitude - firstLongitude)); // 절댓값 사용
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(firstLatitude)) * Math.cos(Math.toRadians(secondLatitude))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c * 1000;
+    }
+    private Long updateExperienceForMission(User user, Mission mission, double distance){
+        if(distance > 100) return null;
+        int reward = mission.getRewards();
+        Level level = user.getLevel();
+        level.updateExperience(reward);
+        level.updateLevel();
+        if(level.getLevel() % 3 == 0)
+            level.updateLadybugType();
+        user.updateCount();
+        user.getSymbol().updateSymbolType();
+        return mission.getId();
     }
     private BaseLevelResponseDto getBaseLevelInfoFromUser(User user){
         Level level = user.getLevel();

@@ -6,6 +6,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -21,7 +22,7 @@ public class Symbol extends BaseEntity {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(nullable = false)
@@ -30,4 +31,9 @@ public class Symbol extends BaseEntity {
 
     @Column(nullable = false)
     private String description;
+
+    public void updateSymbolType(){
+        SymbolType nextSymbolType = SymbolType.updateSymbolType(this.title);
+        this.title = Objects.isNull(nextSymbolType) ? this.title : nextSymbolType;
+    }
 }
