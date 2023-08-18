@@ -41,8 +41,6 @@ public class AuthService {
                 .username(username)
                 .password(passwordEncoder.encode(password))
                 .roles(Collections.singletonList(Authority.ROLE_USER.name()))
-                .majorType(majorType)
-                .exp(0L)
                 .build();
         userRepository.save(user);
 
