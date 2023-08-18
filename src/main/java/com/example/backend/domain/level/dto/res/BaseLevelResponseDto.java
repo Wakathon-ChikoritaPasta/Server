@@ -11,5 +11,5 @@ import lombok.Getter;
 public class BaseLevelResponseDto {
     private int level;
     private long experience;
-    private LadybugType ladybugType;
+    private String ladybugType;
 }
