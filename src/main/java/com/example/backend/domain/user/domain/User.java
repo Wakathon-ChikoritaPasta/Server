@@ -1,7 +1,10 @@
 package com.example.backend.domain.user.domain;
 
+import com.example.backend.domain.level.domain.Level;
+import com.example.backend.domain.major.domain.Major;
+import com.example.backend.domain.symbol.domain.Symbol;
 import com.example.backend.global.BaseEntity;
-import com.example.backend.global.enums.Major;
+import com.example.backend.global.enums.MajorType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,13 +17,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Setter @Getter
+@Getter
 @SuperBuilder
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
 public class User extends BaseEntity implements UserDetails {
 
     @Id
@@ -33,12 +35,14 @@ public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Major major;
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Symbol symbol;
 
-    @Column
-    private long exp;
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Level level;
+
+    @ManyToOne()
+    private Major major;
 
     @Column
     @ElementCollection(fetch = FetchType.EAGER)

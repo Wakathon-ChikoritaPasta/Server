@@ -1,5 +1,7 @@
 package com.example.backend.domain.level.domain;
 
+import com.example.backend.domain.ladybug.domain.LadybugType;
+import com.example.backend.domain.user.domain.User;
 import com.example.backend.global.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -19,9 +21,16 @@ public class Level extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Column(nullable = false)
     private int level;
 
     @Column(nullable = false)
-    private String level_name;
+    private Long experience;
+
+    @Column(nullable = false)
+    private LadybugType ladybugType;
 }

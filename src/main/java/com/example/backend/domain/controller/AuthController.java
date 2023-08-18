@@ -25,7 +25,7 @@ public class AuthController {
     public BaseResponseDto<UserRegisterResponseDto> join(
             @RequestBody UserRegisterRequestDto request
     ) {
-        return authService.join(request.getUsername(), request.getPassword(), request.getMajor());
+        return authService.join(request.getUsername(), request.getPassword(), request.getMajorType());
     }
 
     @PostMapping("/login")
