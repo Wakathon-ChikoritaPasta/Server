@@ -20,11 +20,13 @@ public class MissionService {
     private final MissionRepository missionRepository;
     public GetRandomMissionResponseDto getRandomMission(){
         List<BaseMissionResponseDto> baseMissionResponseDtoList = createBaseMissionResponseDtoList();
+        System.out.println("check");
         return GetRandomMissionResponseDto.of(baseMissionResponseDtoList);
     }
     private List<BaseMissionResponseDto> createBaseMissionResponseDtoList(){
         List<BaseMissionResponseDto> baseMissionResponseDtoList = new ArrayList<>();
         getRandomMissionId().forEach(id -> {
+            System.out.println(id);
             Mission mission = getMission(id);
             BaseMissionResponseDto baseMissionResponseDto = createBaseMissionResponseDto(mission);
             baseMissionResponseDtoList.add(baseMissionResponseDto);
@@ -42,14 +44,17 @@ public class MissionService {
     }
     private List<Long> getRandomMissionId(){
         List<Mission> allMissionList = getAllMissionList();
-        return generateUniqueRandomLongs(allMissionList.size());
+        return generateUniqueRandomLongs(allMissionList.size(), 3);
     }
 
-    private List<Long> generateUniqueRandomLongs(int count) {
+    private List<Long> generateUniqueRandomLongs(int max, int count) {
         Random random = new Random();
         List<Long> uniqueValues = new ArrayList<>();
         while (uniqueValues.size() < count) {
-            uniqueValues.add(random.nextLong());
+            int randomNumber = random.nextInt(max)+1; // 0부터 maxValue까지의 랜덤 값
+            if (randomNumber >= 0 && !uniqueValues.contains((long) randomNumber)) {
+                uniqueValues.add((long)randomNumber);
+            }
         }
         return uniqueValues;
     }
