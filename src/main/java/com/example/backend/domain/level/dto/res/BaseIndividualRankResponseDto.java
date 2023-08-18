@@ -11,6 +11,6 @@ import lombok.Getter;
 public class BaseIndividualRankResponseDto {
     private int rank;
     private String nickname;
-    private LadybugType ladybugType;
+    private String ladybugType;
     private Long experience;
 }
