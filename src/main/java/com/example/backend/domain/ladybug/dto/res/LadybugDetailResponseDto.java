@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Builder
 public class LadybugDetailResponseDto {
-    private SymbolType symbol;
+    private String symbol;
     private String majorType;
     private BaseLevelResponseDto levelInfo;
     private List<BaseIndividualRankResponseDto> schoolRank;
