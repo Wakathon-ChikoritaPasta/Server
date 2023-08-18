@@ -1,6 +1,7 @@
 package com.example.backend.domain.controller;
 
-import com.example.backend.domain.major.dto.MajorScoreDto;
+import com.example.backend.domain.major.dto.MajorScoreRequestDto;
+import com.example.backend.domain.major.dto.MajorScoreResponseDto;
 import com.example.backend.domain.major.service.MajorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +17,12 @@ public class MajorController {
 
     private final MajorService majorService;
 
-    @GetMapping("all")
-    public List<MajorScoreDto> getAll() {
+    @GetMapping("/all")
+    public List<MajorScoreResponseDto> getAll() {
         return majorService.getAllNamesAndTotalScores();
     }
 
-    @GetMapping("names")
+    @GetMapping("/names")
     public List<String> getMajorNameList() {
         return majorService.getMajorNameList();
     }

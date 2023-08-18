@@ -5,11 +5,11 @@ import lombok.*;
 
 @Setter @Getter
 @Builder
-public class MajorScoreDto {
+public class MajorScoreRequestDto {
     private MajorType name;
     private Long totalExperience;
 
-    public MajorScoreDto(MajorType name, Long totalExperience) {
+    public MajorScoreRequestDto(MajorType name, Long totalExperience) {
         this.name = name;
         this.totalExperience = totalExperience;
     }
