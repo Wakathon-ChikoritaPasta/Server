@@ -1,4 +1,4 @@
-package com.example.backend.domain.response;
+package com.example.backend.global.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-import static com.example.backend.domain.response.SuccessMessage.SUCCESS;
+import static com.example.backend.global.response.SuccessMessage.SUCCESS;
 
 
 @Getter

@@ -1,5 +1,6 @@
-package com.example.backend.domain.user;
+package com.example.backend.domain.user.repository;
 
+import com.example.backend.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

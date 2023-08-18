@@ -1,11 +1,13 @@
-package com.example.backend.domain.user;
+package com.example.backend.domain.user.service;
 
-import com.example.backend.domain.response.BaseResponseDto;
-import com.example.backend.domain.response.ErrorMessage;
-import com.example.backend.domain.user.req.TokenReissueRequestDto;
-import com.example.backend.domain.user.res.TokenReissueResponseDto;
-import com.example.backend.domain.user.res.UserLoginResponseDto;
-import com.example.backend.domain.user.res.UserRegisterResponseDto;
+import com.example.backend.domain.user.domain.User;
+import com.example.backend.domain.user.repository.UserRepository;
+import com.example.backend.global.response.BaseResponseDto;
+import com.example.backend.global.response.ErrorMessage;
+import com.example.backend.domain.user.dto.req.TokenReissueRequestDto;
+import com.example.backend.domain.user.dto.res.TokenReissueResponseDto;
+import com.example.backend.domain.user.dto.res.UserLoginResponseDto;
+import com.example.backend.domain.user.dto.res.UserRegisterResponseDto;
 import com.example.backend.global.enums.Authority;
 import com.example.backend.global.enums.Major;
 import com.example.backend.global.jwt.JwtTokenProvider;

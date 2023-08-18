@@ -1,4 +1,4 @@
-package com.example.backend.domain.response;
+package com.example.backend.global.response;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

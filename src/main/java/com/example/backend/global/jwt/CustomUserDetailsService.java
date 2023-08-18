@@ -1,7 +1,7 @@
 package com.example.backend.global.jwt;
 
-import com.example.backend.domain.user.User;
-import com.example.backend.domain.user.UserRepository;
+import com.example.backend.domain.user.domain.User;
+import com.example.backend.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

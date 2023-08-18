@@ -1,4 +1,4 @@
-package com.example.backend.domain.controller;
+package com.example.backend.domain.mission.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;

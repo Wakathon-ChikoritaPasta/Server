@@ -1,4 +1,4 @@
-package com.example.backend.domain;
+package com.example.backend.global;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
