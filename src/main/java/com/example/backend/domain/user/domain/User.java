@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+
 public class User extends BaseEntity implements UserDetails {
 
     @Id
