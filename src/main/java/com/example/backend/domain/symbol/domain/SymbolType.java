@@ -1,7 +1,5 @@
 package com.example.backend.domain.symbol.domain;
 
-import com.example.backend.domain.ladybug.domain.LadybugType;
-
 public enum SymbolType {
     BRONZE,
     SILVER,
