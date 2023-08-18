@@ -32,7 +32,8 @@ public class LadybugService {
     private final MajorRepository majorRepository;
     private final MissionRepository missionRepository;
 
-    public LadybugDetailResponseDto findLadybugDetailInfo(User user){
+    public LadybugDetailResponseDto findLadybugDetailInfo(Long userId){
+        User user = userRepository.findById(userId).orElseThrow();
         SymbolType symbolType = getSymbolTypeFromUser(user);
         MajorType userMajorType = getMajorFromUser(user);
         BaseLevelResponseDto baseLevelResponseDto = getBaseLevelInfoFromUser(user);
@@ -40,7 +41,8 @@ public class LadybugService {
         List<BaseMajorRankResponseDto> majorRank = getMajorRankFromUser(user);
         return LadybugDetailResponseDto.of(symbolType, userMajorType, baseLevelResponseDto, schoolRank, majorRank);
     }
-    public UpdateLadyBugResponseDto updateLadybugInfo(User user, UpdateLadyBugRequestDto requestDto){
+    public UpdateLadyBugResponseDto updateLadybugInfo(Long userId, UpdateLadyBugRequestDto requestDto){
+        User user = userRepository.findById(userId).orElseThrow();
         List<Long> successMissions = updateLadybugExperienceForMission(user, requestDto.getMissionIdList(), requestDto.getLongitude(), requestDto.getLatitude());
         return UpdateLadyBugResponseDto.of(successMissions);
     }

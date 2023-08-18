@@ -17,15 +17,15 @@ public class LadybugController {
     private final LadybugService ladybugService;
 
     @GetMapping("/detail")
-    public BaseResponseDto<LadybugDetailResponseDto> findLadybugDetailInfo(@AuthenticationPrincipal User user){
-        LadybugDetailResponseDto responseDto = ladybugService.findLadybugDetailInfo(user);
+    public BaseResponseDto<LadybugDetailResponseDto> findLadybugDetailInfo(@RequestParam Long userId){
+        LadybugDetailResponseDto responseDto = ladybugService.findLadybugDetailInfo(userId);
         return new BaseResponseDto<>(responseDto);
     }
 
     @PostMapping
-    public BaseResponseDto<UpdateLadyBugResponseDto> updateLadybugInfo(@AuthenticationPrincipal User user,
+    public BaseResponseDto<UpdateLadyBugResponseDto> updateLadybugInfo(@RequestParam Long userId,
                                                                        @RequestBody UpdateLadyBugRequestDto requestDto){
-        UpdateLadyBugResponseDto responseDto = ladybugService.updateLadybugInfo(user, requestDto);
+        UpdateLadyBugResponseDto responseDto = ladybugService.updateLadybugInfo(userId, requestDto);
         return new BaseResponseDto<>(responseDto);
     }
 
