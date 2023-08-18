@@ -7,6 +7,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -33,4 +34,18 @@ public class Level extends BaseEntity {
 
     @Column(nullable = false)
     private LadybugType ladybugType;
+
+    public void updateExperience(int experience){
+        this.experience += experience;
+    }
+
+    public void updateLevel(){
+        int addLevel = (int) (this.experience / 1000);
+        this.level += addLevel;
+    }
+
+    public void updateLadybugType(){
+        LadybugType nextLadybugType = LadybugType.updateLadybugType(this.ladybugType);
+        this.ladybugType = Objects.isNull(nextLadybugType) ? this.ladybugType : nextLadybugType;
+    }
 }

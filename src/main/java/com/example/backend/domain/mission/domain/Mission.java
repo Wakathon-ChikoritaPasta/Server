@@ -28,4 +28,10 @@ public class Mission extends BaseEntity {
     @Column(nullable = false)
     private int rewards;
 
+    @Column(nullable = false)
+    private double latitude;
+
+    @Column(nullable = false)
+    private double longitude;
+
 }

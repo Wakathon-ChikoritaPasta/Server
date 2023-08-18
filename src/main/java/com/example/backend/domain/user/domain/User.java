@@ -7,6 +7,7 @@ import com.example.backend.global.BaseEntity;
 import com.example.backend.global.enums.MajorType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,8 +42,13 @@ public class User extends BaseEntity implements UserDetails {
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Level level;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "major_id")
     private Major major;
+
+    @Column(nullable = false)
+    @ColumnDefault("0")
+    private int count;
 
     @Column
     @ElementCollection(fetch = FetchType.EAGER)
@@ -74,5 +80,9 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return false;
+    }
+
+    public void updateCount(){
+        this.count += 1;
     }
 }
