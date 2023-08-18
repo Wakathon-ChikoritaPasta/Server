@@ -1,4 +1,4 @@
-package com.example.backend.domain.user.res;
+package com.example.backend.domain.user.dto.req;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +8,8 @@ import lombok.Setter;
 @AllArgsConstructor(staticName = "of")
 @Getter @Setter
 @Builder
-public class UserRegisterResponseDto {
+public class UserLoginRequestDto {
 
-    private Boolean isSucceed;
+    private String username;
+    private String password;
 }

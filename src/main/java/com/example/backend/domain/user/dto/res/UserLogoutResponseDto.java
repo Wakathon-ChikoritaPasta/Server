@@ -1,4 +1,4 @@
-package com.example.backend.domain.user.res;
+package com.example.backend.domain.user.dto.res;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

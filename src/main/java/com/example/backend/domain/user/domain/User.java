@@ -1,6 +1,6 @@
-package com.example.backend.domain.user;
+package com.example.backend.domain.user.domain;
 
-import com.example.backend.domain.BaseEntity;
+import com.example.backend.global.BaseEntity;
 import com.example.backend.global.enums.Major;
 import lombok.*;
 import lombok.experimental.SuperBuilder;

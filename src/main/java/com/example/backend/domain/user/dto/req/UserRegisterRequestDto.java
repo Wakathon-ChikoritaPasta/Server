@@ -1,4 +1,4 @@
-package com.example.backend.domain.user.req;
+package com.example.backend.domain.user.dto.req;
 
 import com.example.backend.global.enums.Major;
 import lombok.AllArgsConstructor;

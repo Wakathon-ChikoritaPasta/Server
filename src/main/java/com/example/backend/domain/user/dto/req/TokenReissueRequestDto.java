@@ -1,4 +1,4 @@
-package com.example.backend.domain.user.res;
+package com.example.backend.domain.user.dto.req;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,10 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor(staticName = "of")
-@Getter
-@Setter
+@Setter @Getter
 @Builder
-public class TokenReissueResponseDto {
+public class TokenReissueRequestDto {
 
     private String accessToken;
     private String refreshToken;

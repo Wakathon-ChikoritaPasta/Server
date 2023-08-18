@@ -1,9 +1,10 @@
-package com.example.backend.domain.user;
+package com.example.backend.domain.user.service;
 
-import com.example.backend.domain.response.BaseResponseDto;
-import com.example.backend.domain.response.ErrorMessage;
-import com.example.backend.domain.user.req.UserLogoutRequestDto;
-import com.example.backend.domain.user.res.UserLogoutResponseDto;
+import com.example.backend.domain.user.repository.UserRepository;
+import com.example.backend.global.response.BaseResponseDto;
+import com.example.backend.global.response.ErrorMessage;
+import com.example.backend.domain.user.dto.req.UserLogoutRequestDto;
+import com.example.backend.domain.user.dto.res.UserLogoutResponseDto;
 import com.example.backend.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
