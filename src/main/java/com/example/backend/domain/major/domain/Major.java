@@ -28,4 +28,6 @@ public class Major extends BaseEntity {
     @ColumnDefault("0")
     private Long totalExperience;
 
+
+
 }
