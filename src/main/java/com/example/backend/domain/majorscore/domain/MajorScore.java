@@ -2,10 +2,18 @@ package com.example.backend.domain.majorscore.domain;
 
 import com.example.backend.global.BaseEntity;
 import com.example.backend.global.enums.Major;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-
+@Setter
+@Getter
+@SuperBuilder
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class MajorScore extends BaseEntity {
 
     @Id

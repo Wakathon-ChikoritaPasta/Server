@@ -1,12 +1,18 @@
 package com.example.backend.domain.level.domain;
 
 import com.example.backend.global.BaseEntity;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Setter
+@Getter
+@SuperBuilder
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Level extends BaseEntity {
 
     @Id
