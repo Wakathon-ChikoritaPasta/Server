@@ -1,4 +1,4 @@
-package com.example.backend.domain.user.controller;
+package com.example.backend.domain.controller;
 
 import com.example.backend.global.response.BaseResponseDto;
 import com.example.backend.domain.user.service.AuthService;
