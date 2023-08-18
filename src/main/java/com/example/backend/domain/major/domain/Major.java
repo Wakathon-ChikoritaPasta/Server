@@ -28,6 +28,8 @@ public class Major extends BaseEntity {
     @ColumnDefault("0")
     private Long totalExperience;
 
-
+    public void updateTotalExperience(Long addExperience){
+        this.totalExperience += addExperience;
+    }
 
 }

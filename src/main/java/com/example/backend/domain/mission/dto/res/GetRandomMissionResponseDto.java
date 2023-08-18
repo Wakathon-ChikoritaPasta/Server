@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
+
 @AllArgsConstructor(staticName = "of")
 @Getter
 @Builder
-public class BaseMissionResponseDto {
-    private Long missionId;
-    private String missionName;
-    private double latitude;
-    private double longitude;
+public class GetRandomMissionResponseDto {
+    private List<BaseMissionResponseDto> missionList;
 }

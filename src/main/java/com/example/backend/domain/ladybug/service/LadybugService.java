@@ -7,11 +7,10 @@ import com.example.backend.domain.ladybug.dto.res.UpdateLadyBugResponseDto;
 import com.example.backend.domain.level.domain.Level;
 import com.example.backend.domain.level.dto.res.BaseIndividualRankResponseDto;
 import com.example.backend.domain.level.dto.res.BaseLevelResponseDto;
-import com.example.backend.domain.level.repository.LevelRepository;
 import com.example.backend.domain.major.domain.Major;
 import com.example.backend.domain.major.dto.res.BaseMajorRankResponseDto;
 import com.example.backend.domain.major.repository.MajorRepository;
-import com.example.backend.domain.mission.MissionRepository;
+import com.example.backend.domain.mission.repository.MissionRepository;
 import com.example.backend.domain.mission.domain.Mission;
 import com.example.backend.domain.symbol.domain.SymbolType;
 import com.example.backend.domain.user.domain.User;
@@ -41,7 +40,6 @@ public class LadybugService {
         List<BaseMajorRankResponseDto> majorRank = getMajorRankFromUser(user);
         return LadybugDetailResponseDto.of(symbolType, userMajorType, baseLevelResponseDto, schoolRank, majorRank);
     }
-
     public UpdateLadyBugResponseDto updateLadybugInfo(User user, UpdateLadyBugRequestDto requestDto){
         List<Long> successMissions = updateLadybugExperienceForMission(user, requestDto.getMissionIdList(), requestDto.getLongitude(), requestDto.getLatitude());
         return UpdateLadyBugResponseDto.of(successMissions);
@@ -80,6 +78,7 @@ public class LadybugService {
             level.updateLadybugType();
         user.updateCount();
         user.getSymbol().updateSymbolType();
+        user.getMajor().updateTotalExperience((long)reward);
         return mission.getId();
     }
     private BaseLevelResponseDto getBaseLevelInfoFromUser(User user){
