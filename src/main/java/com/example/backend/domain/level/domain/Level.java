@@ -33,6 +33,7 @@ public class Level extends BaseEntity {
     private Long experience;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private LadybugType ladybugType;
 
     public void updateExperience(int experience){

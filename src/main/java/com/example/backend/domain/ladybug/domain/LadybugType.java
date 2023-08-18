@@ -1,5 +1,10 @@
 package com.example.backend.domain.ladybug.domain;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Getter
 public enum LadybugType {
     EGG,
     PROSPECTIVE_FRESHMAN,
