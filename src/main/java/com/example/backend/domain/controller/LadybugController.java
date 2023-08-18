@@ -4,10 +4,8 @@ import com.example.backend.domain.ladybug.dto.req.UpdateLadyBugRequestDto;
 import com.example.backend.domain.ladybug.dto.res.LadybugDetailResponseDto;
 import com.example.backend.domain.ladybug.dto.res.UpdateLadyBugResponseDto;
 import com.example.backend.domain.ladybug.service.LadybugService;
-import com.example.backend.domain.user.domain.User;
 import com.example.backend.global.response.BaseResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,14 +15,14 @@ public class LadybugController {
     private final LadybugService ladybugService;
 
     @GetMapping("/detail")
-    public BaseResponseDto<LadybugDetailResponseDto> findLadybugDetailInfo(@RequestParam Long userId){
+    public BaseResponseDto<LadybugDetailResponseDto> findLadybugDetailInfo(@RequestParam Long userId) {
         LadybugDetailResponseDto responseDto = ladybugService.findLadybugDetailInfo(userId);
         return new BaseResponseDto<>(responseDto);
     }
 
     @PostMapping
     public BaseResponseDto<UpdateLadyBugResponseDto> updateLadybugInfo(@RequestParam Long userId,
-                                                                       @RequestBody UpdateLadyBugRequestDto requestDto){
+                                                                       @RequestBody UpdateLadyBugRequestDto requestDto) {
         UpdateLadyBugResponseDto responseDto = ladybugService.updateLadybugInfo(userId, requestDto);
         return new BaseResponseDto<>(responseDto);
     }

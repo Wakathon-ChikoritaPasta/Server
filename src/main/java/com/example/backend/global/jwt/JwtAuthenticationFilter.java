@@ -1,6 +1,5 @@
 package com.example.backend.global.jwt;
 
-import com.example.backend.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -40,7 +39,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         if (token != null && jwtTokenProvider.validateToken(token)) {
             String isLogout = (String) redisTemplate.opsForValue().get(token);
             log.info("isLogout : {}", isLogout);
-            if(ObjectUtils.isEmpty(isLogout)) {
+            if (ObjectUtils.isEmpty(isLogout)) {
                 Authentication authentication = jwtTokenProvider.getAuthentication(token);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 log.info("SecurityContextHolder.getContext().getAuthentication() : {}", SecurityContextHolder.getContext().getAuthentication());

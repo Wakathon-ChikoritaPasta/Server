@@ -1,7 +1,9 @@
-package com.example.backend.domain.major.dto;
+package com.example.backend.domain.major.dto.req;
 
 import com.example.backend.global.enums.MajorType;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Setter @Getter
 @Builder

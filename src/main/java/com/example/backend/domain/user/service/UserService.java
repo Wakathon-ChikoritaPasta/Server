@@ -3,14 +3,14 @@ package com.example.backend.domain.user.service;
 import com.example.backend.domain.major.domain.Major;
 import com.example.backend.domain.major.repository.MajorRepository;
 import com.example.backend.domain.user.domain.User;
+import com.example.backend.domain.user.dto.req.UserLogoutRequestDto;
+import com.example.backend.domain.user.dto.res.UserLogoutResponseDto;
 import com.example.backend.domain.user.dto.res.UserUpdateResponseDto;
 import com.example.backend.domain.user.repository.UserRepository;
 import com.example.backend.global.enums.MajorType;
+import com.example.backend.global.jwt.JwtTokenProvider;
 import com.example.backend.global.response.BaseResponseDto;
 import com.example.backend.global.response.ErrorMessage;
-import com.example.backend.domain.user.dto.req.UserLogoutRequestDto;
-import com.example.backend.domain.user.dto.res.UserLogoutResponseDto;
-import com.example.backend.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -52,8 +52,8 @@ public class UserService {
     }
 
     @Transactional
-    public BaseResponseDto<UserUpdateResponseDto> setUserInfo(Long userId ,String newUsername, MajorType newMajor) {
-        log.info("UserService.setUserInfo: newUsername: {}, newMajor: {}",  newUsername, newMajor);
+    public BaseResponseDto<UserUpdateResponseDto> setUserInfo(Long userId, String newUsername, MajorType newMajor) {
+        log.info("UserService.setUserInfo: newUsername: {}, newMajor: {}", newUsername, newMajor);
         User user = userRepository.findById(userId).orElse(null);
         if (user == null) {
             return new BaseResponseDto<>(UserUpdateResponseDto.of(false));
@@ -63,7 +63,7 @@ public class UserService {
         user.setUsername(newUsername);
         Optional<Major> major = majorRepository.findMajorByName(newMajor);
         if (major.isPresent()) {
-            major.get().addMajorWithUser(major.get() ,user);
+            major.get().addMajorWithUser(major.get(), user);
         } else {
             return new BaseResponseDto<>(UserUpdateResponseDto.of(false));
         }

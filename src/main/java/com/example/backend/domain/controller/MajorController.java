@@ -1,7 +1,6 @@
 package com.example.backend.domain.controller;
 
-import com.example.backend.domain.major.dto.MajorScoreRequestDto;
-import com.example.backend.domain.major.dto.MajorScoreResponseDto;
+import com.example.backend.domain.major.dto.req.MajorScoreResponseDto;
 import com.example.backend.domain.major.service.MajorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

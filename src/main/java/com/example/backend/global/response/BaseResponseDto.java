@@ -35,7 +35,7 @@ public class BaseResponseDto<T> {
         this.message = errorMessage.getMessage();
     }
 
-    public BaseResponseDto(int code, Boolean isSuccess, String errorMessage){
+    public BaseResponseDto(int code, Boolean isSuccess, String errorMessage) {
         this.code = code;
         this.isSuccess = isSuccess;
         this.message = errorMessage;

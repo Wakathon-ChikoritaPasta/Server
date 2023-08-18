@@ -1,6 +1,5 @@
 package com.example.backend.domain.user.dto.req;
 
-import com.example.backend.domain.major.domain.Major;
 import com.example.backend.global.enums.MajorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

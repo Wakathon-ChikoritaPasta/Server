@@ -3,7 +3,7 @@ package com.example.backend.global.response;
 import lombok.Getter;
 
 @Getter
-public class BusinessException extends RuntimeException{
+public class BusinessException extends RuntimeException {
     private final ErrorMessage errorMessage;
 
     public BusinessException(ErrorMessage errorMessage) {

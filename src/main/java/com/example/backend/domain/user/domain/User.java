@@ -4,7 +4,6 @@ import com.example.backend.domain.level.domain.Level;
 import com.example.backend.domain.major.domain.Major;
 import com.example.backend.domain.symbol.domain.Symbol;
 import com.example.backend.global.BaseEntity;
-import com.example.backend.global.enums.MajorType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
@@ -86,7 +85,7 @@ public class User extends BaseEntity implements UserDetails {
         return true;
     }
 
-    public void updateCount(){
+    public void updateCount() {
         this.count += 1;
     }
 }

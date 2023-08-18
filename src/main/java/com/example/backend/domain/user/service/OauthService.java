@@ -72,17 +72,18 @@ public class OauthService {
                 user.getId(), isNew, tokenInfo.getAccessToken(), tokenInfo.getRefreshToken()));
     }
 
-    private Map<String, Object> getUserAttributesByToken(String accessToken){
+    private Map<String, Object> getUserAttributesByToken(String accessToken) {
         return WebClient.create()
                 .get()
                 .uri("https://kapi.kakao.com/v2/user/me")
                 .headers(httpHeaders -> httpHeaders.setBearerAuth(accessToken))
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .block();
     }
 
-    private User checkUserExist(String accessToken){
+    private User checkUserExist(String accessToken) {
 
         Map<String, Object> userAttributesByToken = getUserAttributesByToken(accessToken);
         KakaoUserInfo kakaoUserInfo = new KakaoUserInfo(userAttributesByToken);

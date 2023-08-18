@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/mission")
 public class MissionController {
     private final MissionService missionService;
+
     @GetMapping
-    public BaseResponseDto<GetRandomMissionResponseDto> getRandomMission(){
+    public BaseResponseDto<GetRandomMissionResponseDto> getRandomMission() {
         GetRandomMissionResponseDto responseDto = missionService.getRandomMission();
         return new BaseResponseDto<>(responseDto);
     }

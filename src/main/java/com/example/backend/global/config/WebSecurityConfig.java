@@ -1,6 +1,5 @@
 package com.example.backend.global.config;
 
-import com.example.backend.global.enums.Authority;
 import com.example.backend.global.jwt.JwtAuthenticationFilter;
 import com.example.backend.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
